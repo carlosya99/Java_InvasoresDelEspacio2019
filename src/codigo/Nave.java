@@ -43,6 +43,8 @@ public class Nave {
         }
     }
 
+    
+    
     public boolean isPulsadoIzquierda() {
         return pulsadoIzquierda;
     }
