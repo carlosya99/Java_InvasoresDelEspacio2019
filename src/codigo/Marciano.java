@@ -13,26 +13,21 @@ import javax.imageio.ImageIO;
  *
  * @author Carlos Zea
  */
-public class Disparo {
-    public Image imagen = null;
+public class Marciano {
+    public Image imagen1, imagen2 = null;
     public int x = 0;
     public int y = 0;
+    private int vX = 1;
     
-    public Disparo(){
-        try {
-            imagen = ImageIO.read(getClass().getResource("/imagenes/disparo.png"));
+    public Marciano(){
+        try{
+            imagen1 = ImageIO.read(getClass().getResource("/imagenes/marcianito1.png"));
+            imagen2 = ImageIO.read(getClass().getResource("/imagenes/marcianito2.png"));
         } catch (IOException ex) {
-            
-           
         }
     }
     
     public void mueve(){
-        y--;
-    }
-    
-    public void posicionaDisparo(Nave _nave){
-        x = _nave.x + _nave.imagen.getWidth(null)/2 - imagen.getWidth(null)/2;
-        y = _nave.y;
+        x += vX;
     }
 }
