@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import javax.swing.Timer;
-import sun.awt.AWTAccessor;
+
 
 /**
  *
@@ -35,7 +35,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     Disparo miDisparo = new Disparo();
     //Marciano miMarciano = new Marciano();
     Marciano [][] listaMarcianos = new Marciano[filas][columnas];
-    boolean direcciónMarcianos = false;
+    boolean direccionMarcianos = false;
     //el contador sirve para deducir qué imagen del marciano toca poner
     int contador = 0;
     
@@ -136,7 +136,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     private void cambiaDireccionMarcianos(){
         for (int i=0; i<filas; i++){
             for (int j=0; j<columnas; j++){
-                listaMarcianos[i][j].setvX(listaMarcianos[i][j].getvX()*-1);
+                    listaMarcianos[i][j].setvX(listaMarcianos[i][j].getvX()*-1);
             }
                 
             }
@@ -147,11 +147,12 @@ public class VentanaJuego extends javax.swing.JFrame {
         for (int i=0; i<filas; i++){
             for (int j=0; j<columnas; j++){
                 listaMarcianos[i][j].mueve();
+                    
                 //chequeo si el marciano ha chocado contra la pared para cambiar la dirección
                 //de todos los marcianos
                 if (listaMarcianos[i][j].x + anchoMarciano == ANCHOPANTALLA || listaMarcianos[i][j].x == 0){
-                    cambiaDireccionMarcianos();
-                    
+                    direccionMarcianos = true;
+ 
                 }
                 if (contador < 50){
                     g2.drawImage(listaMarcianos[i][j].imagen1,
@@ -166,10 +167,12 @@ public class VentanaJuego extends javax.swing.JFrame {
                             null);
                 }
                 else contador = 0;
-                
-               
             }
         }
+    if (direccionMarcianos){
+        cambiaDireccionMarcianos();
+        direccionMarcianos = false;
+    }    
     }
     
     
