@@ -30,7 +30,7 @@ public class Disparo {
     
     public void mueve(){
         if (disparado){
-            y--;    
+            y -= 10;    
         }
         
     }
