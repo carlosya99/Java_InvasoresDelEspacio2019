@@ -14,29 +14,32 @@ import javax.imageio.ImageIO;
  * @author Carlos Zea
  */
 public class Disparo {
+
     public Image imagen = null;
     public int x = 0;
     public int y = 2000; //Al principio aparecerá muy abajo de la pantalla
     public boolean disparado = false;
-    
-    public Disparo(){
+    public boolean disparoOn = false;
+
+    public Disparo() {
+        disparoOn = true;
         try {
             imagen = ImageIO.read(getClass().getResource("/imagenes/disparo.png"));
         } catch (IOException ex) {
-            
-           
+
         }
     }
-    
-    public void mueve(){
-        if (disparado){
-            y -= 10;    
+
+
+
+    public void mueve() {
+        if (disparado) {
+            y -= 10;
         }
-        
     }
-    
-    public void posicionaDisparo(Nave _nave){
-        x = _nave.x + _nave.imagen.getWidth(null)/2 - imagen.getWidth(null)/2;
-        y = _nave.y - _nave.imagen.getWidth(null)/2;
+
+    public void posicionaDisparo(Nave _nave) {
+        x = _nave.x + _nave.imagen.getWidth(null) / 2 - imagen.getWidth(null) / 2;
+        y = _nave.y - _nave.imagen.getWidth(null) / 2;
     }
 }
